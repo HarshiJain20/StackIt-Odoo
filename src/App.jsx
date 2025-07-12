@@ -1,34 +1,23 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import LeftSidebar from './components/LeftSidebar/LeftSidebar';
-import QuestionList from './components/HomeMainbar/QuestionList';
+import Navbar from './components/Navbar/Navbar';
+import MainLayout from './MainLayout';
 import AboutUs from './Pages/AboutUs/AboutUs';
-import HomeMainbar from './components/HomeMainbar/HomeMainbar'; // ✅ Import
+import AskQuestion from './Pages/AskQuestion/AskQuestion';
 
-const MainLayout = () => {
-  const location = useLocation();
-  const showSidebar = location.pathname === '/';
-
+const App = () => {
   return (
-    <div className="flex">
-      {showSidebar && <LeftSidebar />}
-      <div className="flex-1 min-h-screen bg-white pt-6 px-6">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <HomeMainbar /> {/* ✅ Only shows on homepage */}
-                <QuestionList />
-              </>
-            }
-          />
-          <Route path="/about" element={<AboutUs />} />
-        </Routes>
-      </div>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/*" element={<MainLayout />} />
+
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/ask" element={<AskQuestion />} />
+      </Routes>
+    </Router>
   );
 };
 
-export default MainLayout;
+export default App;
