@@ -13,7 +13,7 @@ const MainLayout = () => {
   return (
     <div className="flex">
       {showSidebar && <LeftSidebar />}
-      <div className="flex-1 min-h-screen bg-white pt-8 px-6">
+      <div className="flex-1 min-h-screen bg-white pt-6 px-6">
         <Routes>
           <Route
             path="/"
