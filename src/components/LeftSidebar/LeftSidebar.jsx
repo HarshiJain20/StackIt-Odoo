@@ -3,7 +3,7 @@ import { FaQuestionCircle, FaTags, FaUsers } from 'react-icons/fa';
 
 const LeftSidebar = () => {
   return (
-    <aside className="w-44 min-h-screen fixed bg-white border-r shadow-sm px-4 py-6">
+    <aside className="w-44 h-[calc(100vh-4rem)] fixed top-16.5 left-0 bg-white border-r shadow-sm px-4 py-6">
       <div className="text-black-500 uppercase text-sm font-semibold mb-4">Public</div>
       <nav className="flex flex-col gap-2 text-black-700">
         <a
