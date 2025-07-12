@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import MainLayout from './MainLayout';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import AskQuestion from './Pages/AskQuestion/AskQuestion';
+import Auth from './Pages/Auth/Auth';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
 
         <Route path="/about" element={<AboutUs />} />
         <Route path="/ask" element={<AskQuestion />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </Router>
   );
