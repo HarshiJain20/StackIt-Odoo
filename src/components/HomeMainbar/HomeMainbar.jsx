@@ -6,8 +6,7 @@ const HomeMainbar = () => {
   const navigate = useNavigate(); // If you're using React Router
 
   const handleAskQuestion = () => {
-    // Example route: /ask or /add-question
-    navigate('/ask'); // Optional; you can change this
+    navigate('/ask'); 
   };
 
   return (

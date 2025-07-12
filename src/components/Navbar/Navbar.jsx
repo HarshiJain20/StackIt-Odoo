@@ -1,8 +1,15 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+  const handleAuth = () => {
+    navigate('/auth'); 
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-white border-b shadow-sm z-50">
       <div className="container max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -27,7 +34,7 @@ const Navbar = () => {
           <Link to="/" className="text-gray-700 font-medium hover:text-blue-600">Home</Link>
           <Link to="/about" className="text-gray-700 font-medium hover:text-blue-600">About Us</Link>
           <Link to="/contact" className="text-gray-700 font-medium hover:text-blue-600">Contact Us</Link>
-          <button className="bg-blue-600 text-white px-4 py-1.5 rounded-md hover:bg-blue-800 transition">
+          <button onClick={handleAuth} className="bg-blue-600 text-white px-4 py-1.5 rounded-md hover:bg-blue-800 transition">
             Login
           </button>
         </div>
