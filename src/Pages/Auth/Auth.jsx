@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [authType, setAuthType] = useState('user'); // 'user' or 'admin'
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Dummy login/signup logic
+    const user = {
+      role: authType,
+      email: e.target.email.value,
+    };
+
+    // Save login state to localStorage
+    localStorage.setItem('user', JSON.stringify(user));
+
+    alert(`✅ ${isSignup ? 'Signup' : 'Login'} successful as ${authType}`);
+    navigate('/'); // Redirect to homepage or dashboard
+  };
 
   return (
     <div className="pt-20 min-h-screen bg-slate-100 flex justify-center items-start px-4 font-[Jost]">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
-        {/* Admin/User Tabs */}
+        {/* Tabs */}
         <div className="flex justify-center border-b bg-gray-50">
           <button
             onClick={() => setAuthType('user')}
@@ -43,36 +61,40 @@ const Auth = () => {
               : 'User Login'}
           </h2>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {isSignup && (
               <input
                 type="text"
+                name="username"
                 placeholder="Username"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-blue-500"
+                className="w-full px-4 py-2 border rounded-md bg-gray-50 focus:outline-blue-500"
                 required
               />
             )}
 
             <input
               type="email"
+              name="email"
               placeholder="Email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-blue-500"
+              className="w-full px-4 py-2 border rounded-md bg-gray-50 focus:outline-blue-500"
               required
             />
 
             {isSignup && authType === 'user' && (
               <input
                 type="tel"
+                name="phone"
                 placeholder="Phone Number"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-blue-500"
+                className="w-full px-4 py-2 border rounded-md bg-gray-50 focus:outline-blue-500"
                 required
               />
             )}
 
             <input
               type="password"
+              name="password"
               placeholder="Password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-blue-500"
+              className="w-full px-4 py-2 border rounded-md bg-gray-50 focus:outline-blue-500"
               required
             />
 
